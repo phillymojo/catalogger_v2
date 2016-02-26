@@ -1,0 +1,10 @@
+body {
+  background-color: #e3e3e6;
+  font-family: sans-serif;
+}
+#main {
+  margin: 0 auto;
+}
+.navigation {
+  margin: auto;
+}
