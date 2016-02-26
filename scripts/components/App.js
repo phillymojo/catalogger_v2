@@ -1,17 +1,21 @@
 import React from 'react';
 import $ from 'jquery';
 window.$ = $;
-import Header from './Header';
-import Body from './Body';
-import Footer from './Footer';
+import CurrentInfo from './currentInfo/CurrentInfo';
+import Header from './header/Header';
+import Filters from './filter/Filters';
+import ItemsContainer from './itemsContainer/ItemsContainer';
+
 
 var App = React.createClass({
 	render: function(){
 		return(
-			<div className="container">
-				<Header />
-				<Body />
-				<Footer />
+			<div className="catalogger-app container">
+				<Header headerData={this.props.pageData.headerData} />
+				<CurrentInfo currentInfoData={this.props.pageData.currentInfo} />
+				<hr />
+				<Filters />
+				<ItemsContainer itemsData={[]}/>
 			</div>
 		)
 	}

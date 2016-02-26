@@ -28878,17 +28878,21 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _Header = require('./Header');
+var _CurrentInfo = require('./currentInfo/CurrentInfo');
+
+var _CurrentInfo2 = _interopRequireDefault(_CurrentInfo);
+
+var _Header = require('./header/Header');
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Body = require('./Body');
+var _Filters = require('./filter/Filters');
 
-var _Body2 = _interopRequireDefault(_Body);
+var _Filters2 = _interopRequireDefault(_Filters);
 
-var _Footer = require('./Footer');
+var _ItemsContainer = require('./itemsContainer/ItemsContainer');
 
-var _Footer2 = _interopRequireDefault(_Footer);
+var _ItemsContainer2 = _interopRequireDefault(_ItemsContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28901,74 +28905,19 @@ var App = _react2.default.createClass({
 	render: function render() {
 		return _react2.default.createElement(
 			'div',
-			{ className: 'container' },
-			_react2.default.createElement(_Header2.default, null),
-			_react2.default.createElement(_Body2.default, null),
-			_react2.default.createElement(_Footer2.default, null)
+			{ className: 'catalogger-app container' },
+			_react2.default.createElement(_Header2.default, { headerData: this.props.pageData.headerData }),
+			_react2.default.createElement(_CurrentInfo2.default, { currentInfoData: this.props.pageData.currentInfo }),
+			_react2.default.createElement('hr', null),
+			_react2.default.createElement(_Filters2.default, null),
+			_react2.default.createElement(_ItemsContainer2.default, { itemsData: [] })
 		);
 	}
 });
 
 exports.default = App;
 
-},{"./Body":161,"./Footer":162,"./Header":163,"jquery":2,"react":159}],161:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Body = _react2.default.createClass({
-	displayName: "Body",
-
-
-	render: function render() {
-
-		return _react2.default.createElement(
-			"div",
-			{ id: "body" },
-			"Body"
-		);
-	}
-});
-
-exports.default = Body;
-
-},{"react":159}],162:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Footer = _react2.default.createClass({
-	displayName: "Footer",
-
-
-	render: function render() {
-		return _react2.default.createElement(
-			"div",
-			{ id: "footer" },
-			"Footer"
-		);
-	}
-});
-
-exports.default = Footer;
-
-},{"react":159}],163:[function(require,module,exports){
+},{"./currentInfo/CurrentInfo":161,"./filter/Filters":166,"./header/Header":167,"./itemsContainer/ItemsContainer":171,"jquery":2,"react":159}],161:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -28979,28 +28928,32 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Navigation = require('./Navigation');
+var _LatestPost = require('./LatestPost');
 
-var _Navigation2 = _interopRequireDefault(_Navigation);
+var _LatestPost2 = _interopRequireDefault(_LatestPost);
+
+var _NextBirthday = require('./NextBirthday');
+
+var _NextBirthday2 = _interopRequireDefault(_NextBirthday);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Header = _react2.default.createClass({
-	displayName: 'Header',
-
+var CurrentInfo = _react2.default.createClass({
+	displayName: 'CurrentInfo',
 
 	render: function render() {
 		return _react2.default.createElement(
 			'div',
-			{ id: 'header' },
-			_react2.default.createElement(_Navigation2.default, null)
+			{ className: 'current_info_container row' },
+			_react2.default.createElement(_LatestPost2.default, { data: this.props.currentInfoData.latestPost }),
+			_react2.default.createElement(_NextBirthday2.default, { data: this.props.currentInfoData.nextitem })
 		);
 	}
 });
 
-exports.default = Header;
+exports.default = CurrentInfo;
 
-},{"./Navigation":164,"react":159}],164:[function(require,module,exports){
+},{"./LatestPost":162,"./NextBirthday":163,"react":159}],162:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29013,21 +28966,439 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Navigation = _react2.default.createClass({
-	displayName: "Navigation",
+var LatestPost = _react2.default.createClass({
+	displayName: "LatestPost",
 
 	render: function render() {
 		return _react2.default.createElement(
 			"div",
-			{ className: "navigation" },
-			"Navigation"
+			{ className: "latest_post col-md-10" },
+			_react2.default.createElement(
+				"div",
+				{ className: "latest_post_title" },
+				this.props.data.title
+			),
+			_react2.default.createElement(
+				"div",
+				{ className: "latest_post_content" },
+				this.props.data.content
+			),
+			_react2.default.createElement(
+				"div",
+				{ className: "latest_post_all_posts" },
+				_react2.default.createElement(
+					"button",
+					{ className: "btn btn-default btn-xs", type: "button", value: "All Posts" },
+					"All Posts"
+				)
+			)
 		);
 	}
 });
 
-exports.default = Navigation;
+exports.default = LatestPost;
+
+},{"react":159}],163:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var NextBirthday = _react2.default.createClass({
+	displayName: "NextBirthday",
+
+	render: function render() {
+		return _react2.default.createElement(
+			"div",
+			{ className: "next_birthday col-md-2" },
+			_react2.default.createElement(
+				"div",
+				{ className: "next_birthday_title" },
+				"Next Birthday"
+			),
+			_react2.default.createElement(
+				"div",
+				{ className: "next_birthday_date" },
+				this.props.data.date
+			),
+			_react2.default.createElement("div", { className: "next_birthday_image" })
+		);
+	}
+});
+
+exports.default = NextBirthday;
+
+},{"react":159}],164:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FilterFilterBy = _react2.default.createClass({
+	displayName: "FilterFilterBy",
+
+	render: function render() {
+		return _react2.default.createElement(
+			"div",
+			{ className: "filter filter_by col-md-2" },
+			_react2.default.createElement(
+				"div",
+				{ className: "dropdown" },
+				_react2.default.createElement(
+					"button",
+					{ className: "btn btn-default dropdown-toggle", type: "button", id: "dropdownMenu2", "data-toggle": "dropdown", "aria-expanded": "false" },
+					"Filter By:",
+					_react2.default.createElement(
+						"span",
+						null,
+						"none"
+					),
+					_react2.default.createElement("span", { className: "caret" })
+				),
+				_react2.default.createElement(
+					"ul",
+					{ className: "dropdown-menu", role: "menu", "aria-labelledby": "dropdownMenu2" },
+					_react2.default.createElement(
+						"li",
+						{ role: "presentation" },
+						_react2.default.createElement(
+							"a",
+							{ role: "menuitem", tabIndex: "-1", href: "#" },
+							"Action"
+						)
+					),
+					_react2.default.createElement(
+						"li",
+						{ role: "presentation" },
+						_react2.default.createElement(
+							"a",
+							{ role: "menuitem", tabIndex: "-1", href: "#" },
+							"Another action"
+						)
+					),
+					_react2.default.createElement(
+						"li",
+						{ role: "presentation" },
+						_react2.default.createElement(
+							"a",
+							{ role: "menuitem", tabIndex: "-1", href: "#" },
+							"Something else here"
+						)
+					),
+					_react2.default.createElement(
+						"li",
+						{ role: "presentation" },
+						_react2.default.createElement(
+							"a",
+							{ role: "menuitem", tabIndex: "-1", href: "#" },
+							"Separated link"
+						)
+					)
+				)
+			)
+		);
+	}
+});
+
+exports.default = FilterFilterBy;
 
 },{"react":159}],165:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var FilterSortBy = _react2.default.createClass({
+	displayName: "FilterSortBy",
+
+	render: function render() {
+		return _react2.default.createElement(
+			"div",
+			{ className: "filter sort_by col-md-2 col-md-offset-8" },
+			_react2.default.createElement(
+				"div",
+				{ className: "dropdown" },
+				_react2.default.createElement(
+					"button",
+					{ className: "btn btn-default dropdown-toggle", type: "button", id: "dropdownMenu1", "data-toggle": "dropdown", "aria-expanded": "false" },
+					"Sort By:",
+					_react2.default.createElement(
+						"span",
+						null,
+						"none"
+					),
+					_react2.default.createElement("span", { className: "caret" })
+				),
+				_react2.default.createElement(
+					"ul",
+					{ className: "dropdown-menu", role: "menu", "aria-labelledby": "dropdownMenu1" },
+					_react2.default.createElement(
+						"li",
+						{ role: "presentation" },
+						_react2.default.createElement(
+							"a",
+							{ role: "menuitem", tabIndex: "-1", href: "#" },
+							"Action"
+						)
+					),
+					_react2.default.createElement(
+						"li",
+						{ role: "presentation" },
+						_react2.default.createElement(
+							"a",
+							{ role: "menuitem", tabIndex: "-1", href: "#" },
+							"Another action"
+						)
+					),
+					_react2.default.createElement(
+						"li",
+						{ role: "presentation" },
+						_react2.default.createElement(
+							"a",
+							{ role: "menuitem", tabIndex: "-1", href: "#" },
+							"Something else here"
+						)
+					),
+					_react2.default.createElement(
+						"li",
+						{ role: "presentation" },
+						_react2.default.createElement(
+							"a",
+							{ role: "menuitem", tabIndex: "-1", href: "#" },
+							"Separated link"
+						)
+					)
+				)
+			)
+		);
+	}
+});
+
+exports.default = FilterSortBy;
+
+},{"react":159}],166:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _FilterSortBy = require('./FilterSortBy');
+
+var _FilterSortBy2 = _interopRequireDefault(_FilterSortBy);
+
+var _FilterFilterBy = require('./FilterFilterBy');
+
+var _FilterFilterBy2 = _interopRequireDefault(_FilterFilterBy);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Section_Filters = _react2.default.createClass({
+	displayName: 'Section_Filters',
+
+	render: function render() {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'filters_container row' },
+			_react2.default.createElement(_FilterSortBy2.default, null),
+			_react2.default.createElement(_FilterFilterBy2.default, null)
+		);
+	}
+});
+
+exports.default = Section_Filters;
+
+},{"./FilterFilterBy":164,"./FilterSortBy":165,"react":159}],167:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Title = require('./Title');
+
+var _Title2 = _interopRequireDefault(_Title);
+
+var _Login = require('./Login');
+
+var _Login2 = _interopRequireDefault(_Login);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = _react2.default.createClass({
+	displayName: 'Header',
+
+
+	render: function render() {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'header row' },
+			_react2.default.createElement(_Title2.default, { headerData: this.props.headerData }),
+			_react2.default.createElement(_Login2.default, { data: this.props })
+		);
+	}
+});
+
+exports.default = Header;
+
+},{"./Login":168,"./Title":169,"react":159}],168:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Login = _react2.default.createClass({
+	displayName: 'Login',
+
+	handleClick: function handleClick(event) {
+		alert('hi tori');
+	},
+
+	render: function render() {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'login col-md-2' },
+			_react2.default.createElement(
+				'button',
+				{ className: 'btn btn-default btn-sm', type: 'button', value: 'Login', onClick: this.handleClick },
+				'Login'
+			)
+		);
+	}
+});
+
+exports.default = Login;
+
+},{"react":159}],169:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Title = _react2.default.createClass({
+	displayName: "Title",
+
+	render: function render() {
+		return _react2.default.createElement(
+			"div",
+			{ className: "title col-md-10" },
+			this.props.headerData.text
+		);
+	}
+});
+
+exports.default = Title;
+
+},{"react":159}],170:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Item = _react2.default.createClass({
+  displayName: "Item",
+
+  render: function render() {
+    return _react2.default.createElement(
+      "div",
+      { className: "itembox col-md-3", "data-id": this.props.data._id },
+      _react2.default.createElement("div", { className: "itemimage" }),
+      _react2.default.createElement(
+        "div",
+        { className: "itemname" },
+        this.props.data.name
+      )
+    );
+  }
+});
+
+exports.default = Item;
+
+},{"react":159}],171:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Item = require('./Item');
+
+var _Item2 = _interopRequireDefault(_Item);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ItemsContainer = _react2.default.createClass({
+	displayName: 'ItemsContainer',
+
+	render: function render() {
+
+		return _react2.default.createElement(
+			'div',
+			{ className: 'items_container row' },
+			this.props.itemsData.map(function (item, i) {
+				return _react2.default.createElement(_Item2.default, { key: i, data: item });
+			})
+		);
+	}
+});
+
+exports.default = ItemsContainer;
+
+},{"./Item":170,"react":159}],172:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -29042,8 +29413,35 @@ var _App = require('./components/App');
 
 var _App2 = _interopRequireDefault(_App);
 
+var _pageData = require('./pageData');
+
+var _pageData2 = _interopRequireDefault(_pageData);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.querySelector('#main'));
+_reactDom2.default.render(_react2.default.createElement(_App2.default, { pageData: _pageData2.default }), document.querySelector('#main'));
 
-},{"./components/App":160,"react":159,"react-dom":3}]},{},[165]);
+},{"./components/App":160,"./pageData":173,"react":159,"react-dom":3}],173:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var pageData = {
+	headerData: { text: "Tori's Catalogger App", color: "Red" },
+	currentInfo: {
+		latestPost: {
+			title: "Latest Post",
+			content: "A single glance at the thing was sufficient to assure me that I was facing one of those long-extinct, prehistoric creatures whose fossilized remains are found within the outer crust as far back as the Triassic formation, a gigantic labyrinthodon.  And there I was, unarmed, and, with the exception of a loin cloth, as naked as I had come into the world.  I could imagine how my first ancestor felt that distant, prehistoric morn that he encountered for the first time the terrifying progenitor of the thing that had me cornered now beside the restless, mysterious sea."
+		},
+		nextitem: {
+			date: 'April 16',
+			item: {}
+		}
+	},
+	contentData: { text: "Content" }
+};
+
+exports.default = pageData;
+
+},{}]},{},[172]);

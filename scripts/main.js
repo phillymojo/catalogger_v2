@@ -2,5 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './components/App';
+import pageData from './pageData';
 
-ReactDOM.render(<App />, document.querySelector('#main'));
+ReactDOM.render(<App pageData={pageData} />, document.querySelector('#main'));

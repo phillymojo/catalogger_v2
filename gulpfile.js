@@ -13,6 +13,8 @@ var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('styles', function(){
+	gulp.src('css/bootstrap/bootstrap.min.css')
+	.pipe(gulp.dest('./build/css/bootstrap'));
 
 	gulp.src('css/style.styl')
 		.pipe(stylus())
