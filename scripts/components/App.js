@@ -15,7 +15,7 @@ var App = React.createClass({
 				<CurrentInfo currentInfoData={this.props.pageData.currentInfo} />
 				<hr />
 				<Filters />
-				<ItemsContainer itemsData={[]}/>
+				<ItemsContainer itemsData={[{name: 'Stinky'}]}/>
 			</div>
 		)
 	}
