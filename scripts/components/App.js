@@ -6,6 +6,9 @@ import Header from './header/Header';
 import Filters from './filter/Filters';
 import ItemsContainer from './itemsContainer/ItemsContainer';
 
+import Rebase from 're-base';
+var base = Rebase.createClass('https://torrid-heat-7589.firebaseio.com/');
+
 
 var App = React.createClass({
 	render: function(){
