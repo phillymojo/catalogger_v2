@@ -11,6 +11,21 @@ var base = Rebase.createClass('https://torrid-heat-7589.firebaseio.com/');
 
 
 var App = React.createClass({
+	getInitialState: function(){
+		return {
+			items: [
+				{name: 'Lemon'}
+			]
+		}
+	},
+	componentDidMount: function(){
+		base.syncState('catalogger', {
+			context: this,
+			state: 'items'
+		});
+		this.setState();
+	},
+
 	render: function(){
 		return(
 			<div className="catalogger-app container">
@@ -18,7 +33,7 @@ var App = React.createClass({
 				<CurrentInfo currentInfoData={this.props.pageData.currentInfo} />
 				<hr />
 				<Filters />
-				<ItemsContainer itemsData={[{name: 'Stinky'}]}/>
+				<ItemsContainer itemsData={this.state.items}/>
 			</div>
 		)
 	}
