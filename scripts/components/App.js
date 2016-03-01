@@ -13,17 +13,14 @@ var base = Rebase.createClass('https://torrid-heat-7589.firebaseio.com/');
 var App = React.createClass({
 	getInitialState: function(){
 		return {
-			items: [
-				{name: 'Lemon'}
-			]
+			items: []
 		}
 	},
 	componentDidMount: function(){
-		base.syncState('catalogger', {
+		base.syncState('catalogger/items', {
 			context: this,
 			state: 'items'
 		});
-		this.setState();
 	},
 
 	render: function(){
