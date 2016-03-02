@@ -23,14 +23,17 @@ var App = React.createClass({
 		});
 	},
 
+	addItem: function(itemdata){
+		console.log('add item button clicked');
+	},
 	render: function(){
 		return(
 			<div className="catalogger-app container">
 				<Header headerData={this.props.pageData.headerData} />
 				<CurrentInfo currentInfoData={this.props.pageData.currentInfo} />
 				<hr />
-				<Filters />
-				<ItemsContainer itemsData={this.state.items}/>
+				<Filters addItem={this.addItem} />
+				<ItemsContainer itemsData={this.state.items} />
 			</div>
 		)
 	}
