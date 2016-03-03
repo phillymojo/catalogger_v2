@@ -13,7 +13,7 @@ var base = Rebase.createClass('https://torrid-heat-7589.firebaseio.com/');
 var App = React.createClass({
 	getInitialState: function(){
 		return {
-			items: []
+			items: {}
 		}
 	},
 	componentDidMount: function(){
@@ -23,9 +23,16 @@ var App = React.createClass({
 		});
 	},
 
-	addItem: function(itemdata){
-		console.log('add item button clicked');
+	addItem: function(item){
+		var timestamp = new Date().getTime();
+		this.state.items['item-'+timestamp] = item;
+		this.setState({items: this.state.items});
 	},
+	deleteItem: function(item){
+		this.state.items[item] = null;
+		this.setState({items: this.state.items});
+	},
+	
 	render: function(){
 		return(
 			<div className="catalogger-app container">
@@ -33,7 +40,7 @@ var App = React.createClass({
 				<CurrentInfo currentInfoData={this.props.pageData.currentInfo} />
 				<hr />
 				<Filters addItem={this.addItem} />
-				<ItemsContainer itemsData={this.state.items} />
+				<ItemsContainer itemsData={this.state.items} deleteItem={this.deleteItem} />
 			</div>
 		)
 	}

@@ -33,10 +33,28 @@ body {
 	margin-top: 20px;
 }
 .itembox {
-	margin-bottom: 20px;	
+	margin-bottom: 20px;
+	position: relative;
 }
 .itemimage {
 	background-color: #ccc;
 	min-height: 220px;
+}
+.itemDelete {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 0;
+	right: 12px;
+	font-size: 24px;
+	display: none;
+}
+.itembox:hover .itemDelete {
+	display: block;
+}
+.itemDelete:hover {
+	background-color: #aaa;
+	font-weight: bold;
+	cursor: pointer;
 }
 
