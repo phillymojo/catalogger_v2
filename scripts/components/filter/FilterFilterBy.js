@@ -3,7 +3,7 @@ import React from 'react';
 var FilterFilterBy = React.createClass({
 	render: function(){
 		return (
-			<div className="filter filter_by col-md-2">
+			<div className="filter filter_by col-md-2 col-xs-6">
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
 				  	Filter By:

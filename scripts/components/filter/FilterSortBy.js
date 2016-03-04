@@ -3,7 +3,7 @@ import React from 'react';
 var FilterSortBy = React.createClass({
 	render: function(){
 		return(
-			<div className="filter sort_by col-md-2 col-md-offset-6">
+			<div className="filter sort_by col-md-2 col-md-offset-6 col-xs-6">
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
 				  	Sort By:

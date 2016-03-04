@@ -14,7 +14,7 @@ var AddItem = React.createClass({
 
 	render: function(){
 		return (
-			<div className="col-md-2">
+			<div className="col-md-2 col-xs-12">
 				<form onSubmit={this.createItem} ref="addItemForm">
 					<button className="additem">Add Item</button>
 					<input type="text" ref="name"></input>
