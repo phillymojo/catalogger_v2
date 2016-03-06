@@ -7,8 +7,8 @@ var Header = React.createClass({
 	render: function(){
 		return (
 			<div className="header row">
-	    	<Title headerData={this.props.headerData} />
-	    	<Login data={this.props} />
+	    	<Title />
+	    	<Login />
 	    </div>
 		)
 	}

@@ -4,7 +4,7 @@ import Item from './Item';
 var ItemsContainer = React.createClass({
 	renderItems: function(key){
 		return (
-			<Item key={key} data={this.props.itemsData[key]} mykey={key} {...this.props}/>	
+			<Item key={key} data={this.props.items[key]} mykey={key} {...this.props}/>	
 		)
 	},
 
@@ -12,7 +12,7 @@ var ItemsContainer = React.createClass({
 		return (
 			<div className="items_container row">
 				{
-					Object.keys(this.props.itemsData).map(this.renderItems)
+					Object.keys(this.props.items).map(this.renderItems)
 				} 
 			</div>
 		);

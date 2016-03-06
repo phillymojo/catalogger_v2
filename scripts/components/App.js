@@ -22,6 +22,10 @@ var App = React.createClass({
 			context: this,
 			state: 'items'
 		});
+		base.syncState('catalogger/posts', {
+			context: this,
+			state: 'posts'
+		});
 	},
 
 	addItem: function(item){
@@ -37,11 +41,11 @@ var App = React.createClass({
 	render: function(){
 		return(
 			<div className="catalogger-app container">
-				<Header headerData={this.props.pageData.headerData} />
-				<CurrentInfo currentInfoData={this.props.pageData.currentInfo} />
+				<Header />
+				<CurrentInfo posts={this.state.posts} />
 				<hr />
 				<Filters addItem={this.addItem} />
-				<ItemsContainer itemsData={this.state.items} deleteItem={this.deleteItem} />
+				<ItemsContainer items={this.state.items} deleteItem={this.deleteItem} /> 
 			</div>
 		)
 	}
