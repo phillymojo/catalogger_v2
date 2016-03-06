@@ -6,7 +6,7 @@ var Item = React.createClass({
 	},
   render: function(){
     return (
-      <div className="itembox col-md-3 col-xs-6" ref={this.props.key} data-id={this.props.data._id}>
+      <div className="itembox col-md-3 col-sm-4 col-xs-6" ref={this.props.key} data-id={this.props.data._id}>
       	<div className="itemDelete" onClick={this.itemDelete}>X</div>
         <div className="itemimage"></div>
         <div className="itemname">{this.props.data.name}</div>

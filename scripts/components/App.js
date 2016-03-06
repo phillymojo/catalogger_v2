@@ -13,7 +13,8 @@ var base = Rebase.createClass('https://torrid-heat-7589.firebaseio.com/');
 var App = React.createClass({
 	getInitialState: function(){
 		return {
-			items: {}
+			items: {},
+			posts: {}
 		}
 	},
 	componentDidMount: function(){
@@ -32,7 +33,7 @@ var App = React.createClass({
 		this.state.items[item] = null;
 		this.setState({items: this.state.items});
 	},
-	
+
 	render: function(){
 		return(
 			<div className="catalogger-app container">
