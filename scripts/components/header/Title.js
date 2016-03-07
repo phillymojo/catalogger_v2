@@ -3,9 +3,9 @@ import React from 'react';
 var Title = React.createClass({
 	render: function(){
 		return (
-			<div className="title col-md-10 col-xs-10">
+			<h1 className="title col-md-10 col-xs-9">
 				Tori's Catalogger App
-			</div>
+			</h1>
 		)
 	}
 });
