@@ -13,39 +13,37 @@ var base = Rebase.createClass('https://torrid-heat-7589.firebaseio.com/');
 var App = React.createClass({
 	getInitialState: function(){
 		return {
-			items: {},
-			posts: {}
+			catalogger: {
+				items: {},
+				posts: {}
+			}
 		}
 	},
 	componentDidMount: function(){
-		base.syncState('catalogger/items', {
+		base.syncState('catalogger', {
 			context: this,
-			state: 'items'
-		});
-		base.syncState('catalogger/posts', {
-			context: this,
-			state: 'posts'
+			state: 'catalogger'
 		});
 	},
 
 	addItem: function(item){
 		var timestamp = new Date().getTime();
-		this.state.items['item-'+timestamp] = item;
-		this.setState({items: this.state.items});
+		this.state.catalogger.items['item-'+timestamp] = item;
+		this.setState({catalogger: this.state.catalogger});
 	},
 	deleteItem: function(item){
-		this.state.items[item] = null;
-		this.setState({items: this.state.items});
+		this.state.catalogger.items[item] = null;
+		this.setState({catalogger: this.state.catalogger});
 	},
 
 	render: function(){
 		return(
 			<div className="catalogger-app container">
 				<Header />
-				<CurrentInfo posts={this.state.posts} />
+				<CurrentInfo posts={this.state.catalogger.posts} />
 				<hr />
 				<Filters addItem={this.addItem} />
-				<ItemsContainer items={this.state.items} deleteItem={this.deleteItem} /> 
+				<ItemsContainer items={this.state.catalogger.items} deleteItem={this.deleteItem} />
 			</div>
 		)
 	}
