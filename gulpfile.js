@@ -25,7 +25,7 @@ gulp.task('styles', function(){
 
 gulp.task('browser-sync', function(){
 	browserSync({
-		server: {},
+		server: {baseDir: './build'},
 		ghostMode: false,
 		middleware: [historyApiFallback()]
 		})
@@ -71,7 +71,12 @@ gulp.task('scripts', function(){
 	return buildScripts('main.js', false);
 });
 
-gulp.task('default', ['styles', 'scripts', 'browser-sync'], function(){
+gulp.task('index', function(){
+	gulp.src('index.html')
+		.pipe(gulp.dest('./build'))
+});
+
+gulp.task('default', ['index', 'styles', 'scripts', 'browser-sync'], function(){
 	gulp.watch('css/**/*', ['styles']);
 	return buildScripts('main.js', true);
 });
