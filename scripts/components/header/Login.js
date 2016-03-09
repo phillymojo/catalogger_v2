@@ -7,7 +7,7 @@ var Login = React.createClass({
 
 	render: function(){
 		return (
-			<div className="login col-md-2 col-xs-3"> 
+			<div className="login col-md-1 col-xs-1"> 
 				<button className="btn btn-primary btn-xs" type="button" value="Login" onClick={this.handleClick}>Login</button>
 			</div>
 		)

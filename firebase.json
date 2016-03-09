@@ -1,11 +1,5 @@
 {
   "firebase": "torrid-heat-7589",
   "public": "./build",
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**",
-    "package.json",
-    "gulpfile.js"
-  ]
+  "ignore": []
 }
