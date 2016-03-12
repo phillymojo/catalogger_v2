@@ -20,10 +20,13 @@ var App = React.createClass({
 		}
 	},
 	componentDidMount: function(){
-		base.syncState('catalogger', {
+		this.rebase_catalogger = base.syncState('catalogger', {
 			context: this,
 			state: 'catalogger'
 		});
+	},
+	componentWillUnmount: function(){
+		base.removeBinding(this.rebase_catalogger);
 	},
 
 	addItem: function(item){
