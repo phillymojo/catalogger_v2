@@ -4,7 +4,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import { createHistory } from 'history';
 
 import App from './components/App';
-import Posts from './components/Posts';
+import Posts from './components/postsContainer/PostsContainer';
 
 var routes = (
 	<Router history={browserHistory} >
