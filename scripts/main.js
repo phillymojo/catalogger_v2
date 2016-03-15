@@ -7,7 +7,7 @@ import App from './components/App';
 import Posts from './components/postsContainer/PostsContainer';
 
 var routes = (
-	<Router history={browserHistory} >
+	<Router history={hashHistory} >
 		<Route path="/" component={App}></Route>
 		<Route path="/posts" component={Posts}></Route>
 	</Router>
